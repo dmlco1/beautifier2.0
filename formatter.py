@@ -1,9 +1,13 @@
 import sys
 from tkinter import *
 from tkinter import filedialog
+import hashlib
 from getmac import get_mac_address as mac
 
-if mac() != "mac address":
+hashed = hashlib.sha256(mac().encode("utf-8")).hexdigest()
+print(hashed)
+
+if hashed != "hashed mac address":
     sys.exit()
 
 def openFile():
